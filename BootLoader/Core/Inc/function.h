@@ -28,12 +28,17 @@ JumpStatus jumpToApp(uint32_t app_addr);
 
 typedef struct
 {
-    uint32_t magic;      // 判断 OTA Info 是否有效
-    uint32_t bootAppSelect;   // 1 = App1, 2 = App2
-    uint32_t version;    // 先预留
-    uint32_t crc;        // 先预留
+    uint32_t magic;
+    uint32_t bootAppSelect;
+    uint32_t version;
+    uint32_t size;
+    uint32_t crc;
+    uint32_t state;
 } OTAInfo;
 
 const OTAInfo* getOTAInfo(void);
+uint32_t getBootAppAddr(void);
+HAL_StatusTypeDef setBootAppAddr(uint32_t app_addr);
+
 #endif
 

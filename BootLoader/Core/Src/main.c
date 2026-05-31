@@ -67,8 +67,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-  uint32_t app_addr = APP1_ADDR;
-  const OTAInfo *otaInfo = NULL;//OTAInfo结构体指针
+
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -100,15 +99,9 @@ int main(void)
     HAL_Delay(500);
   }
   //根据info数据进行跳转
-  otaInfo = getOTAInfo();
-  if(otaInfo->magic == OTA_MAGIC)
-  {
-    if(otaInfo->bootAppSelect==1)
-      app_addr = APP1_ADDR;
-    else if(otaInfo->bootAppSelect==2)
-      app_addr = APP2_ADDR;
-  }
-  jumpToApp(app_addr);
+  setBootAppAddr(OTA_BOOT_APP2);
+	HAL_Delay(500);
+  jumpToApp(getBootAppAddr());
   
 
   /* USER CODE END 2 */
