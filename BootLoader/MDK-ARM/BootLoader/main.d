@@ -34,3 +34,4 @@ bootloader\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h
 bootloader\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h
 bootloader\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h
 bootloader\main.o: ../Core/Inc/gpio.h
+bootloader\main.o: ../Core/Inc/function.h

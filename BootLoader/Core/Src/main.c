@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "function.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,6 +43,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+JumpStatus jumpStatus;
 
 /* USER CODE END PV */
 
@@ -91,6 +92,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+  for (int count = 0; count < 10; count++)
+  {
+    HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+    HAL_Delay(500);
+  }
+
+  jumpToApp(APP2_ADDR);
 
   /* USER CODE END 2 */
 
@@ -99,10 +107,10 @@ int main(void)
   while (1)
   {
     HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+    HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

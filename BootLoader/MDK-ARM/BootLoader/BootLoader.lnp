@@ -4,6 +4,7 @@
 "bootloader\gpio.o"
 "bootloader\stm32h7xx_it.o"
 "bootloader\stm32h7xx_hal_msp.o"
+"bootloader\function.o"
 "bootloader\stm32h7xx_hal_cortex.o"
 "bootloader\stm32h7xx_hal_rcc.o"
 "bootloader\stm32h7xx_hal_rcc_ex.o"
