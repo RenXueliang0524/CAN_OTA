@@ -67,7 +67,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  uint32_t app_addr = APP1_ADDR;
+  const OTAInfo *otaInfo = NULL;//OTAInfo结构体指针
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -92,13 +93,23 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+  //闪烁灯，确保程序正常运行
   for (int count = 0; count < 10; count++)
   {
     HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
     HAL_Delay(500);
   }
-
-  jumpToApp(APP2_ADDR);
+  //根据info数据进行跳转
+  otaInfo = getOTAInfo();
+  if(otaInfo->magic == OTA_MAGIC)
+  {
+    if(otaInfo->bootAppSelect==1)
+      app_addr = APP1_ADDR;
+    else if(otaInfo->bootAppSelect==2)
+      app_addr = APP2_ADDR;
+  }
+  jumpToApp(app_addr);
+  
 
   /* USER CODE END 2 */
 

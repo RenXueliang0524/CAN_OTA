@@ -1,5 +1,9 @@
 #include "function.h"
-
+/**
+ * @brief  跳转到指定应用程序
+ * @param  app_addr 应用程序起始地址
+ * @retval JumpStatus 跳转状态
+ */
 JumpStatus jumpToApp(uint32_t app_addr)
 {
     //获取app1的栈顶和重启地址
@@ -36,4 +40,12 @@ JumpStatus jumpToApp(uint32_t app_addr)
     appEntry();
 
     return JUMP_OK;
+}
+
+/**
+ * @brief  获取OTA Info的结构体数据
+ */
+const OTAInfo* getOTAInfo(void)
+{
+    return (const OTAInfo *)OTA_INFO_ADDR;
 }
