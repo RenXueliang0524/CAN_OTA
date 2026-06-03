@@ -25,6 +25,7 @@ bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h
+bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h
 bootloader\system_stm32h7xx.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h

@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fdcan.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -91,6 +92,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_FDCAN1_Init();
   /* USER CODE BEGIN 2 */
   //闪烁灯，确保程序正常运行
   for (int count = 0; count < 10; count++)
@@ -99,9 +101,15 @@ int main(void)
     HAL_Delay(500);
   }
   //根据info数据进行跳转
-  setBootAppAddr(OTA_BOOT_APP2);
-	HAL_Delay(500);
-  jumpToApp(getBootAppAddr());
+  if (getOtaRequest())
+  {
+    clearOtaRequest();
+    otaInit();
+  }
+  else
+  {
+    jumpStatus = jumpToApp(getBootAppAddr());
+  }
   
 
   /* USER CODE END 2 */
@@ -110,8 +118,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    OTA_FDCAN_Poll();
     HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
-    HAL_Delay(200);
+    HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
